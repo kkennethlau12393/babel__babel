@@ -35,10 +35,7 @@ export function shouldTransform(
 ): NodePath<t.Expression> | false {
   const elementPaths = path.get("elements");
   const elementPathsLength = elementPaths.length;
-  if (
-    elementPathsLength > 0 &&
-    elementPaths[elementPathsLength - 1].isRestElement()
-  ) {
+  if (elementPaths[elementPathsLength - 1].isRestElement()) {
     const { parentPath } = path;
     const rhsPath = parentPath.isVariableDeclarator()
       ? parentPath.get("init")
